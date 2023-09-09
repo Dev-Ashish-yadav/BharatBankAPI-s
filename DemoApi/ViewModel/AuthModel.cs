@@ -14,4 +14,10 @@
         public int ExpiresIn { get; set; }
         public string userID { get; set; }
     }
+
+    public class ProcessStatusRequest
+    {
+        public string uniqueTxId { get; set;}
+    }
+    
 }

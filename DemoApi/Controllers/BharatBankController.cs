@@ -14,6 +14,7 @@ namespace DemoApi.Controllers
      
         [AllowAnonymous]
         [HttpPost("generateAuthToken")]
+        //Generate AuthToken API
         public async Task<ActionResult<DgftAuthResponse>> generateAuthToken(DgftAuthRequest dgftAuthRequest)
         {
             try
@@ -35,6 +36,52 @@ namespace DemoApi.Controllers
             {
                 MainCode mainCode = new MainCode();
                 return await mainCode.IRMToDGFT(jsonRequest);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //getIRMProcessingStatus
+        [AllowAnonymous]
+        [HttpPost("getIRMProcessingStatus")]
+        public async Task<ActionResult<string>> getIRMProcessing(ProcessStatusRequest processStatus)
+        {
+            try
+            {
+                MainCode mainCode = new MainCode();
+                return await mainCode.IRMProcessingStatus(processStatus);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //pushORMToDGFT
+        [AllowAnonymous]
+        [HttpPost("pushORMToDGFT")]
+        public async Task<ActionResult<string>> pushORMToDGFT(JsonRequestData processStatus)
+        {
+            try
+            {
+                MainCode mainCode = new MainCode();
+                return await mainCode.pushORMToDGFT(processStatus);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //getORMProcessingStatus
+        [AllowAnonymous]
+        [HttpPost("getORMProcessingStatus")]
+        public async Task<ActionResult<string>> getORMProcessingStatus(ProcessStatusRequest processStatus)
+        {
+            try
+            {
+                MainCode mainCode = new MainCode();
+                return await mainCode.ORMProcessingStatus(processStatus);
             }
             catch (Exception ex)
             {
