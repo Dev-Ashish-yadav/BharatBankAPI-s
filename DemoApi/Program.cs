@@ -16,15 +16,9 @@ namespace DemoApi
         
         public static void Main(string[] args)
         {
+            ReadArgument();
             CreateHostBuilder(args).Build().Run();
-            IConfiguration config = new ConfigurationBuilder()
-           .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-           .Build();
-
-            DgftBaseUrl = config["DGFTBaseUrl"];
             
-            Api_Key_data = config["x-api-key"];
             
         }
 
@@ -34,5 +28,16 @@ namespace DemoApi
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+        public static void ReadArgument()
+        {
+            IConfiguration config = new ConfigurationBuilder()
+           .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+           .Build();
+
+            DgftBaseUrl = config["DGFTBaseUrl"];
+
+            Api_Key_data = config["x-api-key"];
+        }
     }
 }
